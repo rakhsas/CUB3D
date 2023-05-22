@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 11:14:34 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/05/09 14:07:26 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/05/22 10:25:26 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,13 @@ typedef struct s_textures
 typedef struct s_map
 {
 	char			**map;
+	char			**map_copy;
 	char			**c_tab;
 	int				len_vert;
 	int				len_hori;
 	int				c_p[3];
 	int				f_p[3];
+	int				height;
 	char			*no;
 	char			*so;
 	char			*ea;
@@ -54,7 +56,6 @@ typedef struct s_map
 	t_player		*player;
 	t_textures		*textures;
 }	t_map;
-
 
 int		check_for_chars(char *line);
 int		check_extension(char *str);
@@ -78,4 +79,14 @@ void	check_border_top(t_map *s_map);
 void	check_border_bottom(t_map *s_map);
 void	check_border_left(t_map *s_map);
 void	check_border_right(t_map *s_map);
+void	check_path(t_map *s_map, int i, int j);
+void	make_the_map_rectangle(t_map *s_map, int max);
+void	check_if_spaces(t_map *s_map);
+int		ft_check_right_top(t_map *s_map, int i, int j, int flag);
+int		ft_check_left_bottom(t_map *s_map, int i, int j, int flag);
+int		get_max_len(t_map *s_map);
+void	check_for_unwanted_chars(t_map *s_map);
+void	make_the_map_rectangle(t_map *s_map, int max);
+void	get_map(t_map *s_map);
+void	initialize_sec_part(t_map *s_map);
 #endif

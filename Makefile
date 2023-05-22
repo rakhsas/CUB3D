@@ -3,8 +3,9 @@ NAME = cub3d
 CC = cc
 BLT = builtins
 PRC = parcing
-CFLAGS = -Wall -Wextra -Werror  -fsanitize=address -g3
-FILES = main.c src/parse/parse.c src/parse/extensions.c src/parse/textures.c src/parse/checks.c
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
+FILES = main.c src/parse/parse.c src/parse/extensions.c src/parse/checks.c src/parse/textures.c src/parse/checks1.c\
+		src/parse/vulnerabilities.c
 LIBFT = ./libft/libft.a
 GETNEXTLINE = ./get_next_line/get_next_line.a
 MFLAGS = -I /usr/local/include -L /usr/local/lib -lmlx -framework OpenGl -framework AppKit

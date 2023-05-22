@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 17:46:51 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/05/08 18:10:46 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/05/13 11:38:36 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ char	*test(char *str)
 
 	i = 0;
 	joined = ft_calloc(1, 1);
+	printf("str = %s\n", str);
 	tab = ft_split(str, ' ');
 	while (tab[i])
 	{

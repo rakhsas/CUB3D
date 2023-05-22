@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 22:43:14 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/05/08 16:20:28 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/05/22 10:18:47 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ int	ft_atoi(const char *str)
 	i = 0;
 	sym = 1;
 	res = 0;
-	while ((i[str] == ' ') || (i[str] >= '\t' && i[str] <= '\r'))
-		i++;
+	str = ft_strtrim(str, " ");
 	if (i[str] == '-')
 		ft_error("Error\nNegative resolution\n", "");
 	if (i[str] == '+' || i[str] == '-')

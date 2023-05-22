@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 17:46:59 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/05/08 18:17:40 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/05/14 16:35:52 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,34 @@ void	get_specified_data(t_map *s_map)
 		j += simplify(s_map->c_tab[i], "NO ", &s_map->no, 3);
 		j += simplify(s_map->c_tab[i], "WE ", &s_map->we, 3);
 		j += simplify(s_map->c_tab[i], "EA ", &s_map->ea, 3);
-		j += simplify(s_map->c_tab[i], "F ", &s_map->f, 2);
 		j += simplify(s_map->c_tab[i], "C ", &s_map->c, 2);
+		j += simplify(s_map->c_tab[i], "F ", &s_map->f, 2);
 		i++;
 	}
 	if (j < 6)
 		ft_error("Error\n", "Missing data\n");
 	else if (j > 6)
 		ft_error("Error\n", "Too much data\n");
+}
+
+void	check_for_unwanted_chars(t_map *s_map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (s_map->map[i])
+	{
+		j = 0;
+		while (s_map->map[i][j])
+		{
+			if (s_map->map[i][j] != '1' && s_map->map[i][j] != '0'
+				&& s_map->map[i][j] != 'N' && s_map->map[i][j] != 'S'
+				&& s_map->map[i][j] != 'W' && s_map->map[i][j] != 'E'
+				&& s_map->map[i][j] != ' ')
+				ft_error("Error\nUnwanted character in map\n", "");
+			j++;
+		}
+		i++;
+	}
 }
