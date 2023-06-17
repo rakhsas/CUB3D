@@ -8,17 +8,20 @@ OBJCS = $(FILES:.c=.o)
 OBJCS_B = $(FILES_B:.c=.o)
 all : $(NAME)
 
-$(NAME) : $(OBJCS)
-	@echo "\n\n\033[0;32mCompiling get_next_line..."
+$(NAME) : $(OBJCS) 
 	@$(ARC) $(NAME) $(OBJCS)
-	@echo "\033[0m"
+
+
+bonus :$(OBJCS_B)
+	@$(ARC) $(NAME) $(OBJCS_B)
+
 
 %.o : %.c
-	@printf "\033[0;33mGenerating get_next_line objects... %-33.33s\r" $@
 	@$(CC) $(CFLAGS) -c $< -o $@
-
+	@echo "\033[0;32m𝘾𝙧𝙚𝙖𝙩𝙞𝙣𝙜 ...\033[0m"
 clean :
 	@rm -fr $(OBJCS)
+	@rm -fr $(OBJCS_B)
 fclean : clean
 	@rm -fr $(NAME)
 re :fclean all

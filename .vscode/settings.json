@@ -1,6 +1,14 @@
 {
-	"files.associations": {
-		"math.h": "c",
-		"__node_handle": "c"
-	}
+    "files.associations": {
+        "cub3d.h": "c",
+        "array": "c",
+        "iterator": "c",
+        "string": "c",
+        "string_view": "c",
+        "vector": "c"
+    },
+    "customizeUI.stylesheet": {
+        ".titlebar-container": "display: flex !important;",
+        ".titlebar-back, .titlebar-forward, .titlebar-find": "display: flex !important;"
+    }
 }

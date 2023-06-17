@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/17 02:27:57 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/05/22 10:17:04 by rakhsas          ###   ########.fr       */
+/*   Created: 2022/10/14 12:17:19 by aankote           #+#    #+#             */
+/*   Updated: 2023/03/31 01:21:12 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		x;
-	int		y;
-	char	*str;
+	int		i;
+	int		j;
+	size_t	total_size;
+	char	*newstr;
 
-	if (!s2)
-		return (NULL);
-	if (s1 == 0)
-		s1 = "";
-	x = 0;
-	y = 0;
-	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!str)
-		return (NULL);
-	while (x < (int)ft_strlen(s1))
+	i = 0;
+	j = 0;
+	if (!s1 || !s2)
+		return (0);
+	total_size = ft_strlen(s1) + ft_strlen(s2);
+	newstr = malloc(sizeof(char) * (total_size + 1));
+	if (!newstr)
+		return (0);
+	while (s1[i])
 	{
-		x[str] = x[s1];
-		x++;
+		newstr[i] = s1[i];
+		i++;
 	}
-	while (y < (int)ft_strlen(s2))
-		x++[str] = y++[s2];
-	x[str] = '\0';
-	return (str);
+	while (s2[j])
+		newstr[i++] = s2[j++];
+	newstr[i] = '\0';
+	return (newstr);
 }

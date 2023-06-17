@@ -3,66 +3,111 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aankote <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/17 14:52:40 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/05/07 16:46:47 by rakhsas          ###   ########.fr       */
+/*   Created: 2022/10/19 21:39:41 by aankote           #+#    #+#             */
+/*   Updated: 2022/10/24 04:16:39 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
-static long	ft_absolute(int num)
+static char	*alloc(int n)
 {
-	long long	n;
+	char	*p;
+	int		cpt;
 
-	n = num;
+	cpt = 0;
+	if (n == INT_MIN)
+	{
+		cpt++;
+		n /= 10;
+	}
+	if (n <= 0)
+	{
+		cpt++;
+		n *= -1;
+	}
+	while (n > 0)
+	{
+		n /= 10;
+		cpt++;
+	}
+	p = malloc(sizeof(char) * (cpt + 1));
+	if (p != NULL)
+		return (p);
+	return (0);
+}
+
+static int	nbdigits(int n)
+{
+	int	cpt;
+
+	cpt = 0;
+	if (n == INT_MIN)
+	{
+		cpt++;
+		n /= 10;
+	}
 	if (n < 0)
-		return (n * -1);
-	return (n);
+	{
+		cpt++;
+		n *= -1;
+	}
+	while (n > 0)
+	{
+		cpt++;
+		n /= 10;
+	}
+	return (cpt);
 }
 
-static int	ft_length(int num)
+static char	*mini_itoa(int n)
 {
-	int			len;
-	long long	sign;
+	char	*itoa;
+	int		index;
 
-	len = 1;
-	sign = ft_absolute(num);
-	num /= 10;
-	while (num)
+	index = nbdigits(n);
+	itoa = alloc(n);
+	if (!itoa)
+		return (0);
+	if (n == INT_MIN)
 	{
-		num /= 10;
-		len++;
+		itoa[1] = '2';
+		n = -147483648;
 	}
-	return (len);
+	if (n < 0)
+	{
+		n *= -1;
+		itoa[0] = '-';
+	}
+	itoa[index--] = '\0';
+	while (n > 0)
+	{
+		itoa[index--] = (n % 10) + 48;
+		n /= 10;
+	}
+	return (itoa);
 }
 
-char	*ft_itoa(int num)
+char	*ft_itoa(int n)
 {
-	long long	sign;
-	char		*str;
-	int			i;
-	int			len;
-	int			l;
+	char	*itoa;
 
-	sign = ft_absolute(num);
-	len = ft_length(num);
-	l = len;
-	i = 0;
-	if (num < 0)
-		len = ++l;
-	str = (char *)malloc(sizeof(char) * (len + 1));
-	if (!str)
-		return (NULL);
-	if (num < 0)
-		str[i++] = '-';
-	while (len > i)
+	if (n == 0)
 	{
-		str[len - 1] = (sign % 10) + '0';
-		sign /= 10;
-		len--;
+		itoa = alloc(n);
+		if (itoa)
+		{
+			itoa[0] = '0';
+			itoa[1] = '\0';
+			return (itoa);
+		}
 	}
-	str[l] = '\0';
-	return (str);
+	else
+	{
+		itoa = mini_itoa(n);
+		if (itoa)
+			return (itoa);
+	}
+	return (0);
 }

@@ -3,36 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aankote <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 16:04:41 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/05/04 16:45:15 by rakhsas          ###   ########.fr       */
+/*   Created: 2022/11/14 20:09:18 by aankote           #+#    #+#             */
+/*   Updated: 2022/11/14 20:09:20 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
 # endif
-
-# include <stdio.h>
 # include <fcntl.h>
-# include <unistd.h>
 # include <stdlib.h>
+# include <unistd.h>
 
-// size_t	ft_strlen(char *str);
-
-int		check_newline1(char *str);
-
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 char	*get_next_line(int fd);
-char	*free_it(char *str);
-char	*free_line(char *str);
-char	*str_join(char const	*str, char const	*rts);
-char	*get_l(char *save);
-char	*save(char *save);
-
-void	*ft_memmove(void *dst, const void *src, size_t len);
+char	*ft_strjoin_l(char const *s1, char const *s2);
+size_t	ft_strlen_l(const char *s);
+char	*ft_strchr_l(const char *s, int c);
+char	*join_free(char *sta_buff, char *buff);
 
 #endif

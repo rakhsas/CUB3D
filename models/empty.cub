@@ -1,14 +1,13 @@
-NO textures/north_file.xpm
-
-SO textures/south_file.xpm
-
-WE textures/west_file.xpm
+NO textures/wood_strips.xpm
+SO textures/wood.xpm
+WE textures/wood_box.xpm
+EA textures/rocks.xpm
 F 220,100,0
 C 225,30,0
-EA textures/east_file.xpm
 
 111
-1N1
-1 1
+1W1
 101
+111
+1 1
 111

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/13 19:16:52 by rakhsas           #+#    #+#             */
-/*   Updated: 2022/10/30 16:59:51 by rakhsas          ###   ########.fr       */
+/*   Created: 2022/10/05 21:26:10 by aankote           #+#    #+#             */
+/*   Updated: 2023/04/05 22:28:02 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (i[s])
+	if ((char)c == 0)
+		return ((char *)s + ft_strlen(s));
+	while (i < ft_strlen(s))
 	{
-		if (i[s] == (char)c)
+		if (s[i] == (char)c)
 			return ((char *)s + i);
 		i++;
 	}
-	if ((char)c == '\0')
-		return ((char *)s + i);
 	return (0);
 }

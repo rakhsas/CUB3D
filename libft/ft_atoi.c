@@ -3,41 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aankote <aankote@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/14 22:43:14 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/05/22 10:18:47 by rakhsas          ###   ########.fr       */
+/*   Created: 2022/10/13 14:46:15 by aankote           #+#    #+#             */
+/*   Updated: 2023/04/06 23:25:13 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "stdio.h"
 
 int	ft_atoi(const char *str)
 {
-	int		i;
-	int		sym;
-	long	res;
+	size_t			i;
+	unsigned long	my_int;
+	int				sign;
 
 	i = 0;
-	sym = 1;
-	res = 0;
-	str = ft_strtrim(str, " ");
-	if (i[str] == '-')
-		ft_error("Error\nNegative resolution\n", "");
-	if (i[str] == '+' || i[str] == '-')
+	sign = 1;
+	my_int = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
 		i++;
-	while (i[str])
+	if (str[i] == '+' || str[i] == '-')
 	{
-		if (!ft_isdigit(i[str]))
-			return (-2);
-		else if (res * sym > 2147483647)
-			return (-1);
-		else if (res * sym < -2147483648)
-			return (0);
-		else
-			res = res * 10 + (i[str] - '0');
+		if (str[i] == '-')
+			sign *= -1;
 		i++;
 	}
-	return (sym * res);
+	while ((str[i] >= '0' && str[i] <= '9'))
+		my_int = my_int * 10 + str[i++] - 48;
+	if (my_int >= 9223372036854775807 && sign == 1)
+		return (-1);
+	if (my_int > 9223372036854775807 && sign == -1)
+		return (0);
+	return (my_int * sign);
 }

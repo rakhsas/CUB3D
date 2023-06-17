@@ -3,22 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aankote <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/15 15:54:55 by rakhsas           #+#    #+#             */
-/*   Updated: 2022/10/30 11:50:04 by rakhsas          ###   ########.fr       */
+/*   Created: 2022/10/13 15:10:34 by aankote           #+#    #+#             */
+/*   Updated: 2022/10/25 00:05:34 by aankote          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	char	*str;
+	char	*ptr;
 
-	str = malloc(size * count);
-	if (!str)
-		return (NULL);
-	ft_bzero(str, count * size);
-	return (str);
+	if (count && size > SIZE_MAX / count)
+		return (0);
+	ptr = (char *)malloc(count * size);
+	if (ptr)
+	{
+		ft_bzero(ptr, count * size);
+		return (ptr);
+	}
+	return (0);
 }
