@@ -6,13 +6,13 @@
 #    By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 10:42:23 by aankote           #+#    #+#              #
-#    Updated: 2023/06/16 16:51:01 by rakhsas          ###   ########.fr        #
+#    Updated: 2023/06/18 15:21:28 by rakhsas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
 
-FILES = cub3d.c events.c movements/move.c \
+FILES = cub3d.c events.c movements/move.c\
 		read_map.c mini_map/draw.c mini_map/draw_utils0.c mini_map/draw_utils01.c mini_map/draw_utils02.c \
 		mini_map/check_hor.c mini_map/check_ver.c mini_map/check_intersictions.c window/main_window.c \
 		parse/parse.c parse/extensions.c parse/checks.c parse/textures.c parse/checks1.c\
@@ -20,10 +20,10 @@ FILES = cub3d.c events.c movements/move.c \
 
 OBJCS = $(FILES:.c=.o)
 
-INCLUDES = get_next_line/get_next_line.a libft/libft.a
+INCLUDES = get_next_line/get_next_line.a libft/libft.a  minilibx/libmlx.a
 FRAMEWORK = -lmlx -framework OpenGL -framework AppKit -static-libsan
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS = -Wall -Wextra -Werror # -fsanitize=address -g3
 
 CC = cc
 
@@ -33,6 +33,7 @@ $(NAME) : $(OBJCS)
 	@echo "\n"
 	@make -C libft
 	@make -C get_next_line
+	@make -C minilibx
 	@echo "\033[0;32mCompiling cub3D..."
 	@$(CC) $(CFLAGS) $(INCLUDES) $(FRAMEWORK) $(OBJCS) -o $(NAME) $(INCLUDES)
 
@@ -41,6 +42,7 @@ clean :
 	@echo "\033[0;31mCleaning libft..."
 	@make clean -C libft/
 	@make clean -C get_next_line/
+	@make clean -C minilibx/
 	@echo "\nRemoving binaries..."
 	rm -fr $(OBJCS)
 

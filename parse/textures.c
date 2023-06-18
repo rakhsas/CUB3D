@@ -6,12 +6,11 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 17:46:51 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/06/14 18:38:11 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/06/17 11:52:12 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
 
 void	check_for_textures_path(t_map *s_map)
 {
@@ -101,7 +100,6 @@ char	*test(char *str)
 
 	i = 0;
 	joined = ft_calloc(1, 1);
-	// printf("str = %s\n", str);
 	tab = ft_split(str, ' ');
 	while (tab[i])
 	{

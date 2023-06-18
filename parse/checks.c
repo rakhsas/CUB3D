@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 18:19:35 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/06/12 18:10:00 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/06/17 11:52:38 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	check_for_max_255(char	*str, int *c_p)
 {
 	char	**tab;
 	int		i;
-	int	number;
+	int		number;
 
 	i = 0;
 	if (ft_isdigit(str[ft_strlen(str) - 1]) == 0)

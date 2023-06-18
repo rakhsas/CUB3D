@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 14:12:50 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/15 15:58:35 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/06/18 13:31:21 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,28 @@ void draw_floor(t_data *data)
             my_mlx_pixel_put(&data->main_img, x ++, y, data->wall.floor_color);
         y ++;
     }
+}
+
+int    mouse_move(t_data *data)
+{
+    int x;
+    int y;
+
+    if (data->mouse)
+        return (0);
+    mlx_mouse_get_pos(data->win.mlx_win, &x, &y);
+    if (x >= 0 && x <= WIN_X && y >= 0 && y <= WIN_Y)
+	{
+		data->player.turn_dir = 0;
+		if (x > WIN_X / 2)
+			// data->player.routation_ang -= 3 * (M_PI / 180);
+			data->player.turn_dir = 1;
+		else if (x < WIN_X / 2)
+			// data->player.routation_ang += 3 * (M_PI / 180);
+			data->player.turn_dir = -1;
+	}
+	// mlx_mouse_move(data->win.mlx_win, WIN_X / 2, WIN_Y / 2);
+    return (0);
 }
 
 void draw_win(t_data *data)

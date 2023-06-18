@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:40:42 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/15 11:12:17 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/06/18 11:00:03 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void get_player_pos(t_data *data)
 			break;
 		y ++;
 	}
-	data->player.px_pos = x * CARE;
-	data->player.py_pos = y * CARE;
+	data->player.px_pos = x * CARE + P_SIZE / 2;
+	data->player.py_pos = y * CARE + P_SIZE / 2;
 }
 
 double rad(double deg)

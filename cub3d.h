@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 10:40:06 by aankote           #+#    #+#             */
-/*   Updated: 2023/06/16 16:52:25 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/06/18 15:08:02 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 # include "libft/libft.h"
 # include "get_next_line/get_next_line.h"
 # include <math.h>
-# include <mlx.h>
+# include "minilibx/mlx.h"
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
  #include <fcntl.h>
  #include "stdbool.h"
 
-# define WIN_X 1000
-# define WIN_Y 640
+# define WIN_X 2000
+# define WIN_Y 800
 # define CARE 64
 # define P_SIZE 4
 # define MAP_X 320
@@ -124,6 +124,7 @@ typedef struct s_data
 	t_cord cords;
 	t_wall wall;
 	t_ray ray;
+	bool mouse;
 }	t_data;
 
 typedef struct s_pl
@@ -247,5 +248,6 @@ void draw_sky(t_data *data);
 void	generate_3d(t_data *data, int x);
 void	do_projection(t_data *data, int x, double ds);
 void	configure_data(t_data *data, t_img *tex);
+void	init_player_dir(t_map *s_map, t_data *data);
 
 # endif

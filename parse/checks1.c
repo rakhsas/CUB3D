@@ -6,7 +6,7 @@
 /*   By: rakhsas <rakhsas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 10:21:18 by rakhsas           #+#    #+#             */
-/*   Updated: 2023/06/17 10:40:05 by rakhsas          ###   ########.fr       */
+/*   Updated: 2023/06/18 10:59:03 by rakhsas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,23 @@ void	get_map(t_map *s_map)
 		i++;
 	}
 }
+
 void	check_textures(t_map *s_map)
 {
 	check_for_textures_extension(s_map);
 	check_for_textures_path(s_map);
+}
+
+void	init_player_dir(t_map *s_map, t_data *data)
+{
+	if (s_map->player->p_dir == 'N')
+		data->player.routation_ang = rad(270);
+	else if (s_map->player->p_dir == 'S')
+		data->player.routation_ang = rad(90);
+	else if (s_map->player->p_dir == 'E')
+		data->player.routation_ang = rad(0);
+	else if (s_map->player->p_dir == 'W')
+		data->player.routation_ang = rad(180);
 }
 
 void	parse_first_part(t_map *s_map, int fd)
@@ -66,5 +79,4 @@ void	parse_first_part(t_map *s_map, int fd)
 	init_sec_part(s_map);
 	get_map(s_map);
 	make_the_map_rectangle(s_map, get_max_len(s_map));
-
 }
