@@ -5,10 +5,7 @@
         "iterator": "c",
         "string": "c",
         "string_view": "c",
-        "vector": "c"
-    },
-    "customizeUI.stylesheet": {
-        ".titlebar-container": "display: flex !important;",
-        ".titlebar-back, .titlebar-forward, .titlebar-find": "display: flex !important;"
+        "vector": "c",
+        "complex": "c"
     }
 }
